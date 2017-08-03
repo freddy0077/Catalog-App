@@ -1,0 +1,173 @@
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-5">
+                <div class="media cen-xs">
+                    <p>
+                        &copy; Catalog INC. 2016 - All Rights Reserverd.<br>
+{#                        Idea by <a class="madeby" href="http://showwp.com/">Show WP</a> made with <i class="fa fa-heart"></i> coded with <i class="fa fa-html5"></i>#}
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-7">
+                <ul class="list-inline text-right cen-xs">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Site Terms</a></li>
+                    <li><a href="#">Copyrights</a></li>
+                    <li><a href="#">License</a></li>
+                    <li><a href="#">Legal</a></li>
+                    <li><a class="topbutton" href="#">Back to top <i class="fa fa-angle-up"></i></a></li>
+                </ul>
+            </div>
+        </div><!-- end row -->
+    </div><!-- end container -->
+</footer><!-- end footer -->
+</div><!-- end wrapper -->
+<!-- END SITE -->
+
+<div class="modal fade" tabindex="-1" role="dialog" id="add-category-modal">
+    <div class="modal-dialog" role="document">
+        <form action="{{ url_for('addCategory') }}" method="post">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Add New Category</h4>
+            </div>
+            <div class="modal-body">
+                <p><input type="text" class="form-control" name="category_name" placeholder="category name" required /></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Add Category</button>
+            </div>
+        </div><!-- /.modal-content -->
+        </form>
+
+    </div><!-- /.modal-dialog -->
+
+</div><!-- /.modal -->
+
+{#<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/custom.css') }}">#}
+
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+<script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.gridrotator.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"></script>
+
+{#<script src="js/bootstrap.js"></script>#}
+{#<script src="js/custom.js"></script>#}
+{#<script type="text/javascript" src="js/jquery.gridrotator.js"></script>#}
+<script type="text/javascript">
+    $(function() {
+
+        $( '#ri-grid' ).gridrotator( {
+            animSpeed : 300,
+            columns    : 12,
+            animType : 'rotateBottom',
+            w320 : {
+                rows : 3,
+                columns : 4
+            },
+            w240 : {
+                rows : 3,
+                columns : 3
+            },
+            slideshow : false,
+            onhover : true
+        } );
+
+    });
+
+    function signInCallback(authResult){
+        if(authResult['code']){
+            $('#signinButton').attr('style','display:none');
+
+            $.ajax({
+                type:"POST",
+                url : '/gconnect?state={{STATE}}',
+                processData : false,
+                contentType: 'application/octet-stream: charset=utf-8',
+                data: authResult['code'],
+                success:function(result){
+                    if (result){
+{#                        $('#result').html("Login Successful!</br>" + result + '</br> redirecting...')#}
+                        swal("Good job!", "You have successfully logged in!", "success");
+                        setTimeout(function () {
+                            window.location.href = "/catalog";
+
+                        }, 3000)
+                    }
+                }
+            })
+        }
+        else if(authResult['error']){
+            console.log('There was an error: ' +authResult['error'])
+
+        }else {
+{#            $('#result').html('Failed to make a server side call. check your configuration and console.')#}
+            swal("Sorry!", "Failed to make a server side call. check your configuration and console!", "error")
+
+        }
+    }
+
+
+    <!--FACEBOOK SIGN IN -->
+
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '1622033787858772',
+            cookie     : true,  // enable cookies to allow the server to access
+                                // the session
+            xfbml      : true,  // parse social plugins on this page
+            version    : 'v2.8' // use version 2.8
+        });
+    };
+    // Load the SDK asynchronously
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    // Here we run a very simple test of the Graph API after login is
+    // successful.  See statusChangeCallback() for when this call is made.
+    function sendTokenToServer() {
+        var access_token = FB.getAuthResponse()['accessToken'];
+        console.log(access_token)
+        console.log('Welcome!  Fetching your information.... ');
+        FB.api('/me', function(response) {
+            console.log('Successful login for: ' + response.name);
+            $.ajax({
+                type: 'POST',
+                url: '/fbconnect?state={{STATE}}',
+                processData: false,
+                data: access_token,
+                contentType: 'application/octet-stream; charset=utf-8',
+                success: function(result) {
+                    // Handle or verify the server response if necessary.
+                    if (result) {
+{#                        $('#result').html('Login Successful!</br>'+ result + '</br>Redirecting...')#}
+                        swal("Good job!", "You have successfully logged in!", "success")
+
+                        setTimeout(function() {
+                            window.location.href = "/catalog";
+                        }, 3000);
+
+                    } else {
+{#                        $('#result').html('Failed to make a server-side call. Check your configuration and console.');#}
+                        swal("Sorry!", "Failed to make a server-side call. Check your configuration and console!", "error")
+
+                    }
+                }
+
+            });
+        });
+    }
+
+    $('#add-category').off('click').on('click',function(){
+        $('#add-category-modal').modal()
+    })
+
+</script>

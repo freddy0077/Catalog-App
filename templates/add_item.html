@@ -1,0 +1,89 @@
+{% extends "master.html" %}
+
+{% block content %}
+    <section class="section pagegrey">
+        <div class="container">
+            <div class="title-area text-center">
+                <h2>Add Item <small>.</small></h2>
+                <div class="bread">
+                    <ol class="breadcrumb">
+                        <li><a href="#">Home</a></li>
+{#                        <li><a href="#">{{ category }}</a></li>#}
+                        <li class="active">Add Item</li>
+                    </ol>
+                </div><!-- end bread -->
+            </div><!-- /.pull-right -->
+        </div><!-- end container -->
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                <div class="alert alert-success">
+                                    <strong>Success!</strong>
+                                    {% for message in messages %}
+                                        <strong> {{ message }} </strong>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        {% endwith %}
+                        <div class="widget-title">
+                            <h4>Add Item</h4>
+                        </div><!-- end widget-title -->
+                        <form class="uploaditem"  action="{{ url_for('addItem',category = category)}}" method = 'post'>
+                            <div class="space">
+                                <label>Item Category : </label>
+                                {#                            <select class="selectpicker" data-live-search="true">#}
+                                <select class="form-control">
+                                    {% for category in categories %}
+                                        <option value="{{ category }}">{{ category.name }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </div>
+
+
+                            <div class="space">
+                                <label>Item Name : </label>
+                                <input type="text" class="form-control" name="name" placeholder="" value="">
+                            </div>
+
+                            <div class="space">
+                                <label>Item Details : </label>
+                                <textarea class="form-control" name="description" placeholder=""></textarea>
+                            </div>
+
+                            <div class="space">
+                                <label>Price : </label>
+                                <input type="text" class="form-control" name="price" placeholder="" value="">
+                            </div>
+
+                            <div class="space">
+                                <button class="btn btn-primary btn-block">Submit Item</button>
+                            </div>
+
+                        </form>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end content -->
+        </div>
+    </section>
+
+    <section class="section nopad">
+        <div class="container-fluid">
+            <div class="content-message">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 text-center">
+                        <h2>See why over 10,000 photographers, artists, graphic designers and app developers trust Catalog.<br> Ready to take your marketplace to the next level?</h2>
+                        <a href="#" class="btn btn-primary btn-lg">Join us Today</a>
+                    </div>
+                </div><!-- end row -->
+            </div><!-- end content message -->
+        </div><!-- end container -->
+    </section>
+
+{% endblock %}

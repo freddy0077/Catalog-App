@@ -1,0 +1,76 @@
+{% extends"master.html" %}
+
+
+{% block content %}
+<section class="section pagegrey">
+    <div class="container">
+        <div class="title-area text-center">
+            <h2>Edit Account
+{#                <small>Lorem ipsum dolar sit amet in the world.</small>#}
+            </h2>
+            <div class="bread">
+                <ol class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li class="active">Edit Account</li>
+                </ol>
+            </div><!-- end bread -->
+        </div><!-- /.pull-right -->
+    </div><!-- end container -->
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="widget-title">
+                        <h4>Profile Details</h4>
+                    </div><!-- end widget-title -->
+                    <form class="uploaditem" method="post">
+
+                        <div class="space">
+                            <label>First / Last Name : </label>
+                            <input type="text" class="form-control" name="name" value="{{ user.name }}" placeholder="Enter your name">
+                        </div>
+
+
+                        <div class="space">
+                            <label>Email : </label>
+                            <input type="text" class="form-control" name="email" value="{{ user.email }}" readonly placeholder="Enter your email">
+                        </div>
+
+                        <div class="space">
+                            <label>Phone Number : </label>
+                            <input type="text" class="form-control" name="phone_number" value="{{ user.phone_number }}" placeholder="Enter your phone number">
+                        </div>
+
+{#                        <div class="space">#}
+{#                            <label>Password : </label>#}
+{#                            <input type="password" class="form-control" name="name" value="" placeholder="Enter your name">#}
+{#                        </div>#}
+
+
+                        <div class="space">
+                            <button class="btn btn-primary">Update Profile</button>
+                        </div>
+                    </form>
+                </div><!-- end col -->
+            </div><!-- end row -->
+        </div><!-- end content -->
+    </div>
+</section>
+
+<section class="section nopad">
+    <div class="container-fluid">
+        <div class="content-message">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1 text-center">
+                    <h2>See why over 10,000 photographers, artists, graphic designers and app developers trust Catalog.<br> Ready to take your marketplace to the next level?</h2>
+                    <a href="#" class="btn btn-primary btn-lg">Join us Today</a>
+                </div>
+            </div><!-- end row -->
+        </div><!-- end content message -->
+    </div><!-- end container -->
+</section>
+
+{% endblock %}

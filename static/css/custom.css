@@ -1,0 +1,17 @@
+/******************************************
+	ADD YOUR CUSTOM STYLES HERE
+/******************************************/
+
+	a:hover {
+		color:#F57C00;
+	}
+	.btn-primary {
+		background-color: #F57C00;
+		border-color: #F57C00;
+		color:#ffffff;
+	}
+	.btn-primary:hover,
+	.btn-primary:focus {
+		background-color: #FF9800;
+		border-color:#FF9800;
+	}

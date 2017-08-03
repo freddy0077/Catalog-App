@@ -1,0 +1,103 @@
+{% extends "master.html" %}
+
+{% block content %}
+
+<section class="section pagegrey">
+    <div class="container">
+        <div class="title-area text-center">
+            <h2>{{ item.name }}
+{#                <small>Stylish bearded man walks through the city</small>#}
+            </h2>
+            <div class="bread">
+                <ol class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li class="active">Single Item</li>
+                </ol>
+            </div>
+            <!-- end bread -->
+        </div>
+        <!-- /.pull-right -->
+    </div>
+    <!-- end container -->
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="content">
+            <div class="row">
+                <div id="singlewrapper" class="col-md-7">
+                    <div class="content nopad">
+                        <div class="item-single-wrapper">
+                            <div class="item-box">
+                                <div class="item-media text-center">
+{#                                    <img src="{{ url_for('static', filename='upload/photo_14.jpg') }}" alt="" class="img-responsive">#}
+                                    <img src="http://placehold.it/800x800?text={{ item.name }} image" alt="" class="img-responsive">
+                                </div>
+                                <!-- end item-media -->
+
+                                <div class="item-desc">
+                                    <p>
+                                        {{ item.description  }}
+
+                                    </p>
+                                </div>
+                                <!-- end item-desc -->
+                            </div>
+                            <!-- end item-box -->
+                        </div>
+                        <!-- end item-single-wrapper -->
+                    </div>
+                    <!-- end content -->
+                </div>
+                <!-- end singlewrapper -->
+
+                <div class="col-md-5">
+                    <div class="boxes boxs">
+                        <div class="item-price text-center">
+                            <p>{{ item.price }}</p>
+                            <em><a href="#">Regular License</a></em>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <hr>
+
+                            <div class="table-responsive table-buy">
+                                <table class="table">
+                                    <tbody>
+                                    <tr>
+                                        <th><a href="{{ url_for('editItem', item = item.name, itemid = item.id) }}" class="btn btn-primary btn-block">Edit</a></th>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <ul class="list-inline social">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                            </ul>
+                        </div>
+                        <!-- end price -->
+                    </div>
+                    <!-- end boxes -->
+                </div>
+                <!-- end sidebar -->
+            </div>
+            <!-- end row -->
+
+            <!-- end content after -->
+
+
+        </div>
+        <!-- end content -->
+    </div>
+</section>
+
+{% endblock %}

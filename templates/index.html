@@ -1,0 +1,184 @@
+{% extends "master.html" %}
+
+{% block content %}
+    <section class="section nopad single-wrap firstsection">
+        <div class="absolutetitle">
+            <div class="page-title public-profile-title">
+                <div class="row">
+                    <div class="col-sx-12 text-center">
+                        <h3>Catalog Stock Photos</h3>
+                        <p>Hundreds of stock photos, illustrator, icons, fonts, vectors, video elements! Upload your own <br> handmade stock photos or digital items and make money!</p>
+                    </div>
+                </div>
+
+                <div class="content-before">
+                    <div class="row">
+                        <div class="col-md-12 col-sx-12 cen-xs">
+                            <form class="dropForm" action="{{ url_for('search') }}">
+                                <div class="input-prepend">
+                                    <input type="text" class="form-control" name="search" placeholder="Search anything here.">
+                                    <div class="btn-group">
+                                        <select name="category" class="selectpicker">
+                                            {% for category in categories %}
+                                                <option value="{{ category.id }}">{{ category.name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <button class="btn btn-primary hidden-xs" tabindex="-1"><i class="fa fa-search"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div><!-- end row -->
+                </div><!-- end content before -->
+            </div>
+        </div><!-- end absolutetitle -->
+
+        <div class="main hidden-xs">
+            <div id="ri-grid" class="ri-grid ri-grid-size-2 ri-shadow">
+                <img class="ri-loading-image" src="{{ url_for('static', filename='images/loading.gif') }}"/>
+                <ul>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_01.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_02.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_03.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_04.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_05.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_06.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_07.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_08.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_09.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_10.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_11.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_12.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_13.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_14.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_15.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_16.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_17.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_18.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_19.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_20.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_21.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_22.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_23.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_24.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_25.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_26.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_27.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_28.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_29.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_30.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_31.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_32.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_33.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_34.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_35.jpg') }}" alt=""></a></li>
+                    <li><a href="#"><img src="{{ url_for('static',filename='upload/item_36.jpg') }}" alt=""></a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section grey">
+        <div class="container">
+            <div class="refer-messages">
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <div class="boxes ">
+                            <small>$0.03</small>
+                            <h3>Stock Photos Per Pay</h3>
+{#                            <p>Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>#}
+                        </div>
+                    </div><!-- end col -->
+
+                    <div class="col-md-4">
+                        <div class="boxes ">
+                            <small>$79.90</small>
+                            <h3>Monthly Subscription</h3>
+{#                            <p>Search our aworem sipsum as their default model text, and a search for  ipsuncover many web sites still in their infancy.</p>#}
+                        </div>
+                    </div><!-- end col -->
+
+                    <div class="col-md-4">
+                        <div class="boxes">
+                            <small>$2590.00</small>
+                            <h3>Yearly Subscription</h3>
+{#                            <p>Uncover many web sites search our aworem sipsum as their default mode, and a search fortheir' willstill in their ipsum.</p>#}
+                        </div>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end refer-messages -->
+
+{#            <div class="row">#}
+{#                <div class="col-md-12">#}
+{#                    <div class="allbutton text-center">#}
+{#                        <a href="#" class="btn btn-primary btn-lg">View Pricings & Plans</a>#}
+{#                    </div><!-- end allbutton -->#}
+{#                </div><!-- end col -->#}
+{#            </div><!-- end row -->#}
+        </div><!-- end container -->
+    </section>
+
+    <section class="section hometab">
+        <div class="container">
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="publicprofile">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#products" aria-controls="products" role="tab" data-toggle="tab">Popular Categories</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active fade in" id="products">
+                                    <div class="row">
+                                        {% for category in results %}
+
+{#                                        {% for category in categories %}#}
+
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="item-box">
+                                                <div class="item-media entry">
+                                                    <img src="{{ url_for('static',filename='upload/cat_'+ category.id|string +'.jpg') }}" alt="" class="img-responsive">
+                                                    <div class="magnifier">
+                                                        <div class="item-author">
+                                                            <div class="rating">
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                            </div>
+                                                        </div><!-- end author -->
+                                                    </div>
+                                                    <div class="theme__button">
+                                                        <p>
+                                                            <a href="{{ url_for('showCategory',category = category.name) }}" title=""><i class="fa fa-link"></i></a></p>
+                                                    </div>
+                                                </div><!-- end item-media -->
+                                                <h4><a href="{{ url_for('showCategory',category = category.name) }}">{{ category.name }} ({{ category.item }})</a></h4>
+                                            </div><!-- end item-box -->
+                                        </div><!-- end col -->
+
+                                        {% endfor %}
+
+                                    </div><!-- end row -->
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end content -->
+        </div>
+    </section>
+
+    {% for result in results %}
+
+        {{ result.name }}
+        {{ result.item }}
+
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,64 @@
+<header class="header">
+	<div class="container-menu">
+		<nav class="navbar navbar-default yamm">
+			<div class="container-fluid">
+				<div class="navbar-table">
+					<div class="navbar-cell">
+						<div class="navbar-header">
+							<a class="navbar-brand"  href="{{ url_for('showCatalogs') }}"><i class="fa fa-camera-retro"></i> Catalog</a>
+							<div class="open-menu">
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="fa fa-bars"></span>
+								</button>
+							</div>
+						</div><!-- end navbar-header -->
+					</div><!-- end navbar-cell -->
+					<div class="navbar-cell stretch">
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+							<div class="navbar-cell">
+								<ul class="nav navbar-nav navbar-center">
+									<li><a class="active" href="{{ url_for('showCatalogs') }}" title="">Home</a></li>
+                                    <li><a class="" href="{{ url_for('addCategoryItem') }}" title="">Add Item</a></li>
+
+                                    {% if not session['username'] %}
+                                    <li><a class="" href="{{ url_for('addCategory') }}" title="">Add Category</a></li>
+                                    {% else %}
+
+									<li><a class="" href="#" id="add-category" title="">Add Category</a></li>
+{#									<li><a href="#" title="">All Items</a></li>#}
+{#									<li><a href="contact.html" title="">Contact</a></li>#}
+                                    {% endif %}
+								</ul>
+								<ul class="nav navbar-nav navbar-right">
+									<li class="dropdown membermenu hovermenu">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                            {{  session['username'] }}
+{#                                            <img src="{{ url_for('static', filename='upload/member.png') }}" alt="" class="img-circle">#}
+                                            <img src="{{  session['picture'] }}" alt="" class="img-circle">
+                                            <span class="caret"></span>
+                                        </a>
+										<ul class="dropdown-menu">
+{#											<li class="dropdown-header">Profile</li>#}
+                                            {% if not session['username'] %}
+                                                <li><a class="" href="{{ url_for('showLogin') }}" title="">Log in</a></li>
+                                            {% else %}
+                                                <li class="dropdown-header">{{ session['email'] }}</li>
+                                                <li><a href="#">Edit Account</a></li>
+                                                <li><a href="{{ url_for('logOut') }}">Logout</a></li>
+                                            {% endif %}
+
+
+{#											<li><hr></li>#}
+{#											<li><a href="downloads.html">Downloads</a></li>#}
+										</ul>
+									</li>
+								</ul>
+							</div><!-- end navbar-cell -->
+						</div><!-- /.navbar-collapse -->
+					</div><!-- end navbar cell -->
+				</div><!-- end navbar-table -->
+			</div><!-- end container fluid -->
+		</nav><!-- end navbar -->
+	</div><!-- end container -->
+</header>
